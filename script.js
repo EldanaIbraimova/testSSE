@@ -1,7 +1,20 @@
 //import onMount from "svelte"
 let time = ""
-
+let para = document.getElementById("time")
 const evtSrc = new EventSource("http://localhost:3500/event")
+/*const messages = await fetch("http://localhost:3500/getMessages").then(
+    (response) =>{
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`)
+        }
+        return response.text();
+    }
+).then((text) => para.textContent = text).catch((error) => para.textContent = `Could not fetch verse: ${error}`);
+
+if(messages.status !== 200){
+    console.log("Could not to the server")
+}
+*/
 evtSrc.onmessage = function (event){
     time = event.data
     let para = document.getElementById("time")
